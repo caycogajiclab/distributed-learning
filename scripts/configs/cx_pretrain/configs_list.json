@@ -1,0 +1,40 @@
+[
+	
+	{
+		"name":"fb_lr-4.1000.fb.r_init",
+		"settings.datatype": "cart",
+		"model_state.plant": true,
+		"net_params.hidden_layer_specs.sigma_rec": 0.0,
+		"net_params.inter_specs.autoencoder": false,
+		"pretrain_params.fb_lr": 1e-4,
+		"model_state.modules_plasticity.cereb_to_cortex": true
+	},
+	{
+		"name":"fb_lr-4.fb.r_init",
+		"settings.datatype": "cart",
+		"model_state.plant": true,
+		"net_params.hidden_layer_specs.sigma_rec": 0.0,
+		"net_params.inter_specs.autoencoder": false,
+		"pretrain_params.fb_lr": 1e-4,
+		"pretrain_params.fb_lr_start": 0,
+		"model_state.modules_plasticity.cereb_to_cortex": true
+	},
+	{
+		"name":"fb.ae_fixed",
+		"settings.datatype": "cart",
+		"model_state.plant": true,
+		"net_params.hidden_layer_specs.sigma_rec": 0.0,
+		"net_params.inter_specs.autoencoder": true,
+		"model_state.modules_plasticity.cereb_to_cortex": false
+	},
+	{
+        "name": "RNN",
+        "settings.datatype": "cart",
+        "model_state.plant": true,
+        "net_params.hidden_layer_specs.sigma_rec": 0.0,
+        "net_params.inter_specs.autoencoder": false,
+        "model_state.modules_plasticity.cereb_to_cortex": false,
+        "pretrain_params.correction_fb": false
+    }
+
+]

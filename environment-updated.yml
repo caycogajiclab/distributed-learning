@@ -1,0 +1,16 @@
+# CCDL — UPDATED runtime environment (conda), Python 3.12
+#
+# NOT FULLY TESTED. To reproduce the paper's results use the legacy
+# environment.yml (Python 3.8.10).
+#
+# Create:
+#     conda env create -f environment-updated.yml
+#     conda activate ccdl
+name: ccdl
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - -r updated-requirements.txt

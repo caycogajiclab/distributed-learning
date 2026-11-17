@@ -1,0 +1,35 @@
+{
+    "home":     "",
+    "work_dir": "",
+    "name":     "cereb_pretrain",
+    "seed":     127,
+    "iterations": 5,
+
+    "net_params": {
+        "input_size":    5,
+        "output_size":   2,
+        "hidden_layers": [1024, 1024]
+    },
+
+    "train_params": {
+        "epochs":      20000,
+        "lr":          1e-4,
+        "batch_size":  3500,
+        "print_steps": 200
+    },
+
+    "dataset_params": {
+        "tasks":          8,
+        "small_ring":     false,
+        "target":         "moving",
+        "interpolation":  "bell",
+        "timesteps":      130,
+        "hold_cue_time":  30,
+        "t_in_duration":  30,
+        "small_ring_rot": true,
+        "rings_size":     [0.1, 0.05],
+        "joints_length":  [0.22, 0.27],
+        "input_type":     "autoenc",
+        "input_mode":     "full-go"
+    }
+}

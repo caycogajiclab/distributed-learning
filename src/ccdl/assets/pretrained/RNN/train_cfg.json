@@ -1,0 +1,195 @@
+{
+  "name": "RNN",
+  "rnn_hidden_size": 256,
+  "model_class": "CerebelloCorticalNet",
+  "iterations": 5,
+  "cx_pretrain_path": "",
+  "cb_pretrain_path": "",
+  "net_params": {
+    "ct": false,
+    "hidden_layer_specs": {
+      "nonlinearity": "tanh",
+      "init_method": "uniform",
+      "dt": 10,
+      "tau": 100,
+      "in_bias": true,
+      "h_bias": true,
+      "sigma_rec": 0.0
+    },
+    "rnn_specs": {
+      "out_bias": false,
+      "sigma_in": 0.0,
+      "init_method": "uniform",
+      "nonlin": "linear",
+      "private_gradients": false
+    },
+    "cereb_specs": {
+      "sizes": [
+        1024,
+        1024
+      ],
+      "bias": true,
+      "init_method": "xavier_normal",
+      "init_gain": 0.1,
+      "h_nlin": "relu",
+      "out_nlin": "linear",
+      "private_gradients": false
+    },
+    "inter_specs": {
+      "weight_distro": [
+        "uniform"
+      ],
+      "bias_distro": [
+        "uniform"
+      ],
+      "autoencoder": false,
+      "gain": 1
+    },
+    "nonlinearity_specs": {
+      "module": "TwoJointsArm"
+    },
+    "device": "cpu",
+    "dtype": "torch.float32"
+  },
+  "dataset_params": {
+    "tasks": 8,
+    "small_ring": false,
+    "target": "moving",
+    "interpolation": "bell",
+    "timesteps": 130,
+    "hold_cue_time": 30,
+    "t_in_duration": 30,
+    "small_ring_rot": true,
+    "rings_size": [
+      0.1,
+      0.05
+    ],
+    "joints_length": [
+      0.22,
+      0.27
+    ],
+    "input_type": "autoenc",
+    "input_mode": "full-go",
+    "device": "cpu",
+    "dtype": "torch.float32"
+  },
+  "perturbation_params": null,
+  "model_state": {
+    "cereb_feedback": false,
+    "cereb_readout": false,
+    "modules_plasticity": {
+      "cortex_hw": true,
+      "cortex_hb": true,
+      "cortex_in": true,
+      "cortex_out": false,
+      "cereb_to_cortex": false,
+      "cereb": false
+    },
+    "local_plasticity": false,
+    "plant": true
+  },
+  "settings": {
+    "datatype": "cart",
+    "opt": null,
+    "outsave_step": 0,
+    "print_steps": 100,
+    "save_w_steps": 100,
+    "record_gradients": true,
+    "save_cortex": true,
+    "verbose": true,
+    "debug": false,
+    "tensorboard_params": {},
+    "train_params": {
+      "epochs": 50000,
+      "correction_fb": false,
+      "lr": 0.0001,
+      "fb_lr": null,
+      "fb_lr_start": 1000,
+      "l1": 0.0,
+      "l2": 0.0001,
+      "activity_penalty": 0.0,
+      "reg_drop": [
+        0.01,
+        5000
+      ],
+      "lr_scheduler": "cosine",
+      "local_lr": 0.0001,
+      "local_rule_settings": [
+        1,
+        0,
+        false
+      ],
+      "early_stop": false,
+      "es_params": [
+        500,
+        1e-09
+      ]
+    },
+    "model_state": {
+      "cereb_feedback": false,
+      "cereb_readout": false,
+      "modules_plasticity": {
+        "cortex_hw": true,
+        "cortex_hb": true,
+        "cortex_in": true,
+        "cortex_out": false,
+        "cereb_to_cortex": false,
+        "cereb": false
+      },
+      "local_plasticity": false,
+      "plant": true
+    }
+  },
+  "pretrain_settings": {
+    "datatype": "cart",
+    "opt": null,
+    "outsave_step": 0,
+    "print_steps": 100,
+    "save_w_steps": 100,
+    "record_gradients": true,
+    "save_cortex": true,
+    "verbose": true,
+    "debug": false,
+    "tensorboard_params": {},
+    "train_params": {
+      "epochs": 50000,
+      "correction_fb": false,
+      "lr": 0.0001,
+      "fb_lr": null,
+      "fb_lr_start": 1000,
+      "l1": 0.0,
+      "l2": 0.0001,
+      "activity_penalty": 0.0,
+      "reg_drop": [
+        0.01,
+        5000
+      ],
+      "lr_scheduler": "cosine",
+      "local_lr": 0.0001,
+      "local_rule_settings": [
+        1,
+        0,
+        false
+      ],
+      "early_stop": false,
+      "es_params": [
+        500,
+        1e-09
+      ]
+    },
+    "model_state": {
+      "cereb_feedback": false,
+      "cereb_readout": false,
+      "modules_plasticity": {
+        "cortex_hw": true,
+        "cortex_hb": true,
+        "cortex_in": true,
+        "cortex_out": false,
+        "cereb_to_cortex": false,
+        "cereb": false
+      },
+      "local_plasticity": false,
+      "plant": true
+    }
+  }
+}

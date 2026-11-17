@@ -1,0 +1,92 @@
+[
+    {
+        "name": "RNN.plastic-out",
+        "rnn_only": true,
+        "train_params.cb_lr": null,
+        "train_params.cx_lr": 1e-4,
+        "train_params.cx_scheduler": 2000,
+        "train_params.cb_scheduler": false,
+        "model_state.cereb_feedback": false,
+        "model_state.cereb_readout": false,
+        "model_state.local_plasticity": false,
+        "model_state.modules_plasticity.cortex_hw": true,
+        "model_state.modules_plasticity.cortex_hb": true,
+        "model_state.modules_plasticity.cortex_out": true,
+        "model_state.modules_plasticity.cereb": false
+    },
+    {
+        "name": "CxBP",
+        "rnn_only": false,
+        "train_params.cb_lr": 1e-4,
+        "train_params.cx_lr": 1e-5,
+        "train_params.cx_scheduler": false,
+        "train_params.cb_scheduler": 2000,
+        "model_state.cereb_feedback": true,
+        "model_state.cereb_readout": true,
+        "model_state.local_plasticity": false,
+        "model_state.modules_plasticity.cortex_hw": true,
+        "model_state.modules_plasticity.cortex_hb": true,
+        "model_state.modules_plasticity.cereb": true,
+        "net_params.inter_specs.gain": 1,
+        "param_to_iterate": {
+            "name": "train_params.cx_lr",
+            "values": [1e-5,5e-6, 2e-6, 1e-6, 5e-7]
+        }
+    },
+    {
+        "name": "CxBP.h-gain",
+        "rnn_only": false,
+        "train_params.cb_lr": 1e-4,
+        "train_params.cx_lr": 1e-5,
+        "train_params.cx_scheduler": false,
+        "train_params.cb_scheduler": 2000,
+        "model_state.cereb_feedback": true,
+        "model_state.cereb_readout": true,
+        "model_state.local_plasticity": false,
+        "model_state.modules_plasticity.cortex_hw": true,
+        "model_state.modules_plasticity.cortex_hb": true,
+        "model_state.modules_plasticity.cereb": true,
+        "net_params.inter_specs.gain": 20,
+        "param_to_iterate": {
+            "name": "train_params.cx_lr",
+            "values": [1e-5,5e-6, 2e-6, 1e-6, 5e-7]
+        }
+    },
+    {
+        "name": "CxLocal",
+        "rnn_only": false,
+        "train_params.cb_lr": 1e-4,
+        "train_params.cx_lr": null,
+        "train_params.cx_scheduler": false,
+        "train_params.cb_scheduler": 2000,
+        "model_state.cereb_feedback": true,
+        "model_state.cereb_readout": true,
+        "model_state.local_plasticity": true,
+        "model_state.modules_plasticity.cortex_hw": false,
+        "model_state.modules_plasticity.cortex_hb": false,
+        "model_state.modules_plasticity.cereb": true,
+        "net_params.inter_specs.gain": 1,
+        "param_to_iterate": {
+            "name": "train_params.local_lr",
+            "values": [2e-2,1e-2,5e-3, 2e-3, 1e-3]
+        }
+    },
+    {
+        "name": "CxLocal.h-gain",
+        "train_params.cb_lr": 1e-4,
+        "train_params.cx_lr": null,
+        "train_params.cx_scheduler": false,
+        "train_params.cb_scheduler": 2000,
+        "model_state.cereb_feedback": true,
+        "model_state.cereb_readout": true,
+        "model_state.local_plasticity": true,
+        "model_state.modules_plasticity.cortex_hw": false,
+        "model_state.modules_plasticity.cortex_hb": false,
+        "model_state.modules_plasticity.cereb": true,
+        "net_params.inter_specs.gain": 20,
+        "param_to_iterate": {
+            "name": "train_params.local_lr",
+            "values": [2e-2,1e-2,5e-3, 2e-3, 1e-3]
+        }
+    }
+]

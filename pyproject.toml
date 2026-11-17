@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ccdl"
+version = "0.0.0"
+description = "Cerebello-Cortical Distributed Learning for Motor Adaptation"
+requires-python = ">=3.8"
+
+# NOTE: runtime dependencies are intentionally NOT declared here. They are
+# pinned in requirements.txt / environment.yml (the single source of truth for
+# reproducing results: legacy setup, Python 3.8); the newer, not fully tested
+# stack is in updated-requirements.txt (Python 3.12). This file only makes the repo's own code importable via
+# `pip install -e .` as the `ccdl` package (src layout), so imports like
+# `from ccdl.CCNet import CerebelloCorticalNet` resolve from anywhere.
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+ccdl = ["assets/pretrained/**/*"]

@@ -1,0 +1,25 @@
+# CCDL — LEGACY (paper) runtime environment (conda)
+#
+# Use this to reproduce the paper's results. The newer, not fully tested stack
+# is environment-updated.yml.
+#
+# Creates a Python 3.8.10 env and installs the exact package versions that
+# produced the results via pip, using requirements.txt as the single source of
+# truth (so the pins — including the cu113 torch build — stay identical to the
+# pip-only setup). The recorded env was pip-based (torch came from a local
+# cu113 wheel), so we let pip resolve the stack rather than the conda solver.
+#
+# Create:
+#     conda env create -f environment.yml
+#     conda activate ccdl
+#
+# The `--extra-index-url` for the cu113 torch wheel is set inside
+# requirements.txt, so it applies here too.
+name: ccdl
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8.10
+  - pip
+  - pip:
+      - -r requirements.txt

@@ -1,0 +1,49 @@
+[
+	{
+		"name": "FxCx.CbRo",
+		"model_state.cereb_readout": true,
+		"net_params.rnn_specs.private_gradients":true,
+		"net_params.cereb_specs.private_gradients":true,
+        "train_params.cb_scheduler": 4000
+	},
+	{
+		"name": "FxCx.CbFb",
+		"model_state.cereb_feedback":true,
+        "train_params.cb_scheduler": 4000
+	},
+	{
+		"name": "FxCx.CbRo.CbFb",
+		"model_state.cereb_readout": true,
+		"model_state.cereb_feedback":true,
+        "train_params.cb_scheduler": 4000
+	},
+	{
+		"name": "FxCx.CbRo.CbFb.PrGrad",
+		"model_state.cereb_readout": true,
+		"model_state.cereb_feedback":true,
+		"net_params.rnn_specs.private_gradients":true,
+		"net_params.cereb_specs.private_gradients":true,
+        "train_params.cb_scheduler": 4000
+	},
+	{
+		"name": "RNN",
+		"rnn_only": true,
+		"param_to_iterate.name": "train_params.cx_lr",
+		"model_state.modules_plasticity.cortex_hw": true,
+		"model_state.modules_plasticity.cortex_hb": true,
+		"model_state.modules_plasticity.cortex_out": true,
+		"model_state.modules_plasticity.cereb": false,
+        "train_params.cx_scheduler": 4000
+	},
+	{
+		"name": "RNN.faster_decay",
+		"rnn_only": true,
+		"param_to_iterate.name": "train_params.cx_lr",
+		"model_state.modules_plasticity.cortex_hw": true,
+		"model_state.modules_plasticity.cortex_hb": true,
+		"model_state.modules_plasticity.cortex_out": true,
+		"model_state.modules_plasticity.cereb": false,
+        "train_params.cx_scheduler": 2000
+		
+	}
+]

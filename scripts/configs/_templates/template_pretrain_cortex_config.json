@@ -1,0 +1,123 @@
+{
+  "// ─── TEMPLATE · cortex pretraining config ──────────────": "Base config for a cortex-pretraining run (run via pretrain_cortex.py). It uses a pretrain_params block (note: \"lr\" / \"lr_scheduler\", not cx_lr) instead of train_params. configs_list.json in the same directory lists the variants layered on top.",
+
+  "// PATHS · filled at runtime by run_jobs / prepare_configs": "━━",
+  "home": "",
+  "work_dir": "",
+  "cx_pretrain_path": "",
+  "cb_pretrain_path": "",
+
+  "// BASIC INFO": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+  "name": "a_enc.pos",
+  "seed": 12,
+  "iterations": 5,
+  "use_cuda": false,
+  "model_class": "CerebelloCorticalNet",
+  "rnn_hidden_size": 256,
+
+  "// DATASET · reaching-task generation": "━━━━━━━━━━━━━━━━━━━━",
+  "dataset_params": {
+    "tasks": 8,
+    "small_ring": false,
+    "target": "moving",
+    "interpolation": "bell",
+    "timesteps": 130,
+    "hold_cue_time": 30,
+    "t_in_duration": 30,
+    "small_ring_rot": true,
+    "rings_size": [0.1, 0.05],
+    "joints_length": [0.22, 0.27],
+    "input_type": "autoenc",
+    "input_mode": "full-go"
+  },
+
+  "// PERTURBATION · none during pretraining": "━━━━━━━━━━━━━━━━",
+  "perturbation_params": null,
+
+  "// NETWORK SPECS · cortex (RNN), cerebellum, interface, plant": "━━",
+  "net_params": {
+    "ct": false,
+    "hidden_layer_specs": {
+      "nonlinearity": "tanh",
+      "init_method": "uniform",
+      "dt": 10,
+      "tau": 100,
+      "in_bias": true,
+      "h_bias": true,
+      "sigma_rec": 0
+    },
+    "rnn_specs": {
+      "out_bias": false,
+      "sigma_in": 0.0,
+      "init_method": "uniform",
+      "nonlin": "linear",
+      "private_gradients": false
+    },
+    "cereb_specs": {
+      "sizes": [1024, 1024],
+      "bias": true,
+      "init_method": "xavier_normal",
+      "init_gain": 0.1,
+      "h_nlin": "relu",
+      "out_nlin": "linear",
+      "private_gradients": false
+    },
+    "inter_specs": {
+      "weight_distro": ["uniform"],
+      "bias_distro": ["uniform"],
+      "autoencoder": false,
+      "gain": 1
+    },
+    "nonlinearity_specs": {
+      "module": "TwoJointsArm"
+    }
+  },
+
+  "// PRETRAINING PARAMETERS · learning rates & schedule": "\"lr\" is the cortex learning rate; fb_* is the feedback pathway; lr_scheduler accepts false, an int step, or \"cosine\". reg_drop = [drop_factor, epoch].",
+  "pretrain_params": {
+    "epochs": 50000,
+    "correction_fb": true,
+    "lr": 1e-4,
+    "fb_lr": null,
+    "fb_lr_start": 1000,
+    "l1": 0.0,
+    "l2": 1e-4,
+    "activity_penalty": 0.0,
+    "reg_drop": [0.01, 5000],
+    "lr_scheduler": "cosine",
+    "local_lr": 1e-4,
+    "local_rule_settings": [1, 0, false],
+    "early_stop": false,
+    "es_params": [500, 1e-9]
+  },
+
+  "// SETTINGS · logging / checkpoint cadence": "━━━━━━━━━━━━━━━━",
+  "settings": {
+    "datatype": null,
+    "opt": null,
+    "outsave_step": 0,
+    "print_steps": 100,
+    "save_w_steps": 100,
+    "record_gradients": true,
+    "save_cortex": true,
+    "verbose": true,
+    "debug": false,
+    "tensorboard_params": {}
+  },
+
+  "// MODEL STATE · which modules exist and which are plastic": "━━",
+  "model_state": {
+    "cereb_feedback": false,
+    "cereb_readout": false,
+    "modules_plasticity": {
+      "cortex_hw": true,
+      "cortex_hb": true,
+      "cortex_in": true,
+      "cortex_out": false,
+      "cereb_to_cortex": false,
+      "cereb": false
+    },
+    "local_plasticity": false,
+    "plant": true
+  }
+}

@@ -1,0 +1,32 @@
+# ccdl — UPDATED runtime environment (pip), Python 3.12
+#
+# NOT FULLY TESTED. To reproduce the paper's results use the legacy setup
+# (requirements.txt, Python 3.8).
+#
+# Same direct dependencies as the legacy requirements.txt. Versions are chosen
+# to run on Python 3.12 while changing as little as possible from the legacy
+# stack (mostly the first/last release lines that support 3.12):
+#   numpy 1.26   last 1.x line (no numpy 2 changes), first with Python 3.12
+#   torch 2.2    first line with Python 3.12, last with Intel-Mac builds; before
+#                torch.load defaults to weights_only=True (2.6)
+#   matplotlib 3.8  last line before cm.get_cmap was removed (3.9)
+# torch comes from PyPI (CUDA build on Linux, CPU/MPS on macOS); setup.sh can
+# install the CPU-only build instead (Linux).
+#
+# Install:
+#     pip install -r updated-requirements.txt
+
+# --- scientific stack ---
+numpy==1.26.4
+scipy==1.11.4
+pandas==2.3.3
+matplotlib==3.8.4
+scikit-learn==1.3.2
+# pandas Excel engine for the per-figure .xlsx source-data export (save_plot).
+openpyxl==3.1.2
+
+# --- deep learning ---
+torch==2.2.2
+# Required at runtime by torch.utils.tensorboard.SummaryWriter.
+tensorboard==2.18.0
+ipykernel==6.29.5

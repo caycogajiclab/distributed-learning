@@ -1,0 +1,116 @@
+{
+    "seed": 24,
+    "param_to_iterate": {
+        "name": "train_params.cx_lr",
+        "values": [1e-5,5e-6, 2e-6, 1e-6, 5e-7]
+    },
+    "iterations": 5,
+    "rnn_hidden_size": 256,
+    "model_class": "CerebelloCorticalNet",
+    "dataset_params": {
+        "tasks": 8,
+        "small_ring": false,
+        "target": "moving",
+        "interpolation": "bell",
+        "timesteps": 130,
+        "hold_cue_time": 30,
+        "t_in_duration": 30,
+        "small_ring_rot": true,
+        "rings_size": [0.1, 0.05],
+        "joints_length": [0.22, 0.27],
+        "input_type": "autoenc",
+        "input_mode": "full-go"
+    },
+    "perturbation_params": {
+        "angle": 40,
+        "amplitude_factor": 1.0,
+        "translation": [0.0, 0.0]
+    },
+    "net_params": {
+        "hidden_layer_specs": {
+            "nonlinearity": "tanh",
+            "init_method": "uniform",
+            "dt": 10,
+            "tau": 100,
+            "in_bias": true,
+            "h_bias": true,
+            "sigma_rec": 0
+        },
+        "rnn_specs": {
+            "out_bias": false,
+            "sigma_in": 0.0,
+            "init_method": "uniform",
+            "nonlin": "linear",
+            "private_gradients": true
+        },
+    
+        "cereb_specs": {
+            "sizes": [
+                1024,
+                1024
+            ],
+            "bias": true,
+            "init_method": "xavier_normal",
+            "init_gain": 0.1,
+            "h_nlin": "relu",
+            "out_nlin": "linear",
+            "private_gradients": true
+        },
+    
+        "inter_specs": {
+            "weight_distro": ["uniform"],
+            "bias_distro": ["uniform"],
+            "autoencoder": false,
+            "gain": 1
+        },
+    
+        "nonlinearity_specs": {
+            "module": "TwoJointsArm"
+        }
+    },
+    "train_params": {
+        "epochs": 40000,
+        "cx_lr": null,
+        "cx_lr_start": null,
+        "cx_error": "cx-only",
+        "correction_fb": false,
+        "cb_lr": 1e-4,
+        "fb_lr": null,
+        "fb_lr_start": null,
+        "l1": 0.0,
+        "l2": 0.0,
+        "activity_penalty": 0.0,
+        "reg_drop": null,
+        "cb_scheduler": 5000,
+        "early_stop": false,
+        "es_params": [
+          500,
+          1e-9
+        ]
+    },
+    "settings": {
+        "datatype": "cart",
+        "opt": null,
+        "outsave_step": 0,
+        "print_steps": 100,
+        "save_w_steps": 500,
+        "record_gradients": false,
+        "save_cortex": false,
+        "verbose": false,
+        "debug_step": false
+    },
+    "model_state": {
+        "cereb_feedback": true,
+        "cereb_readout": true,
+        "modules_plasticity": {
+            "cortex_hw": true,
+            "cortex_hb": true,
+            "cortex_in": false,
+            "cortex_out": false,
+            "cereb_to_cortex": false,
+            "cereb": true
+        },
+        "local_plasticity": false,
+        "plant": true
+    }
+}

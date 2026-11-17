@@ -1,0 +1,91 @@
+[
+    {
+        "name": "cereb_ablation",
+        "damage_model_state": {
+            "cereb_feedback": false,
+            "cereb_readout": false,
+            "modules_plasticity": {
+                "cortex_hw": false,
+                "cortex_hb": false,
+                "cortex_in": false,
+                "cortex_out": false,
+                "cereb_to_cortex": false,
+                "cereb": true
+            },
+            "local_plasticity": false,
+            "plant": true
+        }
+    },
+    {
+        "name": "cereb_feedback_ablation",
+        "damage_model_state": {
+            "cereb_feedback": false,
+            "cereb_readout": true,
+            "modules_plasticity": {
+                "cortex_hw": false,
+                "cortex_hb": false,
+                "cortex_in": false,
+                "cortex_out": false,
+                "cereb_to_cortex": false,
+                "cereb": true
+            },
+            "local_plasticity": false,
+            "plant": true
+        }
+    },
+    {
+        "name": "cereb_readout_ablation",
+        "damage_model_state": {
+            "cereb_feedback": true,
+            "cereb_readout": false,
+            "modules_plasticity": {
+                "cortex_hw": false,
+                "cortex_hb": false,
+                "cortex_in": false,
+                "cortex_out": false,
+                "cereb_to_cortex": false,
+                "cereb": true
+            },
+            "local_plasticity": true,
+            "plant": true
+        }
+    },
+    {
+        "name": "cereb_plasticity_damage",
+        "damage_model_state": {
+            "cereb_feedback": true,
+            "cereb_readout": true,
+            "modules_plasticity": {
+                "cortex_hw": false,
+                "cortex_hb": false,
+                "cortex_in": false,
+                "cortex_out": false,
+                "cereb_to_cortex": false,
+                "cereb": false
+            },
+            "local_plasticity": true,
+            "plant": true
+        }
+    },
+    {
+        "name": "control",
+        "damage_model_state": {
+            "cereb_feedback": true,
+            "cereb_readout": true,
+            "modules_plasticity": {
+                "cortex_hw": false,
+                "cortex_hb": false,
+                "cortex_in": false,
+                "cortex_out": false,
+                "cereb_to_cortex": false,
+                "cereb": true
+            },
+            "local_plasticity": true,
+            "plant": true
+        },
+        "damage_epochs_list": [400]
+    }
+
+
+    
+]

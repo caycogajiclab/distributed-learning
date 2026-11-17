@@ -1,0 +1,73 @@
+[
+	{
+		"name": "local_lr.5e-5",
+		"train_params.local_lr":5e-5
+	},
+	{
+		"name": "local_lr.1e-4",
+		"train_params.local_lr":1e-4
+	},
+	{
+		"name": "local_lr.2e-4",
+		"train_params.local_lr":2e-4
+	},
+	{
+		"name": "local_lr.5e-4",
+		"train_params.local_lr":5e-4
+	},
+	{
+		"name": "local_lr.1e-3",
+		"train_params.local_lr":1e-3
+	},
+	{
+		"name": "local_lr.5e-3",
+		"train_params.local_lr":5e-3
+	},
+	{
+		"name": "local_lr.5e-3",
+		"train_params.local_lr":5e-3
+	},
+	{
+		"name": "local_lr.1e-2",
+		"train_params.local_lr":1e-2
+	},
+	{
+		"name": "local_lr.2e-2",
+		"train_params.local_lr":2e-2
+	},
+	{
+		"name": "local_lr.2e-3",
+		"train_params.local_lr":2e-3
+	},
+	{
+		"name": "gain.1e-1",
+		"train_params.local_lr":5e-3,
+		"net_params.inter_specs.gain": 1e-1
+	},
+	{
+		"name": "gain.1",
+		"train_params.local_lr":5e-3,
+		"net_params.inter_specs.gain": 1
+	},
+	{
+		"name": "gain.2",
+		"train_params.local_lr":5e-3,
+		"net_params.inter_specs.gain": 2
+	},
+	{
+		"name": "gain.5",
+		"train_params.local_lr":5e-3,
+		"net_params.inter_specs.gain": 5
+	},
+	{
+		"name": "gain.10",
+		"train_params.local_lr":5e-3,
+		"net_params.inter_specs.gain": 10,
+		"settings.save_w_steps": 500
+	},
+	{
+		"name": "gain.20",
+		"train_params.local_lr":5e-3,
+		"net_params.inter_specs.gain": 20
+	}
+]

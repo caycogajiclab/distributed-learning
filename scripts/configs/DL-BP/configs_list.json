@@ -1,0 +1,10 @@
+[
+	{
+		"name": "gain.1",
+		"net_params.inter_specs.gain":1
+	},
+	{
+		"name": "gain.20",
+		"net_params.inter_specs.gain":20
+	}
+]

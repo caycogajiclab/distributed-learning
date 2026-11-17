@@ -1,0 +1,42 @@
+# ccdl — LEGACY (paper) runtime environment (pip)
+#
+# Use this to reproduce the paper's results. A newer, not fully tested stack
+# is in updated-requirements.txt (see setup.sh / README).
+#
+# Python 3.8.10 (the recorded env used the CPython 3.8.13 / cu113 torch wheel).
+#
+# These are the DIRECT third-party packages imported by `src/` and
+# `figures_scripts/`, pinned to the exact versions recorded in the environment
+# that produced the results. (The complete pip freeze of the original env is
+# preserved in git history at the `baseline` tag.) Transitive dependencies
+# (numpy backends, matplotlib deps, etc.) are resolved by pip and are not
+# listed here.
+#
+# Install:
+#     pip install -r requirements.txt
+#
+# torch is pinned to the CUDA 11.3 build that produced the results; the line
+# below points pip at the PyTorch wheel index so `+cu113` resolves.
+#   - CPU-only reproduction: replace `torch==1.11.0+cu113` with `torch==1.11.0+cpu`
+#     (setup.sh offers this on Linux).
+#   - Other CUDA versions change the GPU binary; keep cu113 to match the results.
+--extra-index-url https://download.pytorch.org/whl/cu113
+
+# --- scientific stack ---
+numpy==1.22.3
+scipy==1.10.0
+pandas==1.5.3
+matplotlib==3.5.2
+scikit-learn==1.2.0
+# pandas Excel engine for the per-figure .xlsx source-data export (save_plot).
+openpyxl==3.1.2
+
+# --- deep learning ---
+torch==1.11.0+cu113
+# Required at runtime by torch.utils.tensorboard.SummaryWriter
+# (src/trainer.py, src/pre_trainer.py — reached by the train_/pretrain_ scripts).
+tensorboard==2.9.0
+# Not used directly: tensorboard 2.9 needs protobuf < 4 but doesn't declare it
+# (unpinned, pip picks 5.x and `import tensorboard` crashes).
+protobuf==3.20.3
+ipykernel==6.29.5
